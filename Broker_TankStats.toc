@@ -1,0 +1,14 @@
+## Interface: 30200
+## Title: Broker |cffffffffTankStats|r
+## Notes: Tank statistics Data Broker plugin.
+## Author: @project-author@
+## X-Credits: Sanjuro
+## X-Date: @project-date-iso@
+## X-Category: Interface Enhancements
+## Version: 1.0
+
+libs/LibStub/LibStub.lua
+libs/CallbackHandler-1.0/CallbackHandler-1.0.lua
+libs/LibDataBroker-1.1/LibDataBroker-1.1.lua
+
+Broker_TankStats.lua

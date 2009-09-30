@@ -1,5 +1,6 @@
 local TS = CreateFrame("Frame", "Broker_TankStats")
 local LDB = LibStub("LibDataBroker-1.1")
+local L = L
 TS.Dodge = LDB:NewDataObject("Dodge", {text = "0%"..L["DODGE"], value = "0%", suffix = L["DODGE"]})
 TS.Bock = LDB:NewDataObject("Block", {text = "0%"..L["BOCK"], value = "0%", suffix = L["BOCK"]})
 TS.Parry = LDB:NewDataObject("Parry", {text = "0%"..L["PARRY"], value = "0%", suffix = L["PARRY"]})

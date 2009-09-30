@@ -8,7 +8,7 @@ local debug = false
 debug = true
 --@end-debug@
 
-local L =  LibStub("AceLocale-3.0"):NewLocale("Broker_TankStats", "enUS", true)
+L =  {}
 if L then
 --@localization(locale="enUS", format="lua_additive_table", same-key-is-true=true, handle-subnamespaces="subtable")@
 if GetLocale() == "enUS" then return end

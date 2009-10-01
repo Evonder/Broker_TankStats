@@ -9,12 +9,10 @@ debug = true
 --@end-debug@
 
 L =  {}
-if L then
+if (L and GetLocale() == "enUS") then
 --@localization(locale="enUS", format="lua_additive_table", same-key-is-true=true, handle-subnamespaces="subtable")@
-if GetLocale() == "enUS" then return end
 end
 
-if L then
+if (L and GetLocale() == "zhTW") then
 --@localization(locale="zhTW", format="lua_additive_table", same-key-is-true=true, handle-subnamespaces="subtable")@
-if GetLocale() == "zhTW" then return end
 end

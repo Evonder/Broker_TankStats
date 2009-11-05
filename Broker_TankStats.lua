@@ -23,7 +23,7 @@ TS:RegisterEvent("UNIT_AURA")
 TS:RegisterEvent("PLAYER_LOGIN")
 
 TS:SetScript("OnEvent", function(self, event, unit)
-	if unit and unit ~= player then return end
+	if (unit and unit ~= player) then return end
 
 	local dodge = format(two_fp, GetDodgeChance())
 	self.Dodge.text = dodge..L["DODGE"]
@@ -46,7 +46,13 @@ TS:SetScript("OnEvent", function(self, event, unit)
 	self.Exp.text = Exp..L["EXP"]
 	self.Exp.value = Exp
 	
-	local avoi = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+	if (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1 and UnitRace("player") == "Night Elf") then
+		avoi =  format(two_fp, GetDodgeChance() + 7 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+	elseif (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1) then
+		avoi = format(two_fp, GetDodgeChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+	else
+		avoi = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+	end
 	self.Avoi.text = avoi..L["AVOI"]
 	self.Avoi.value = avoi	
 end)

@@ -4,7 +4,6 @@ local L = L
 TS.Dodge = LDB:NewDataObject("Dodge", {text = "0%"..L["DODGE"], value = "0%", suffix = L["DODGE"]})
 TS.block = LDB:NewDataObject("Block", {text = "0%"..L["BLOCK"], value = "0%", suffix = L["BLOCK"]})
 TS.Parry = LDB:NewDataObject("Parry", {text = "0%"..L["PARRY"], value = "0%", suffix = L["PARRY"]})
-TS.Def = LDB:NewDataObject("Defense", {text = "0"..L["DEF"], value = "0", suffix = L["DEF"]})
 TS.Exp = LDB:NewDataObject("Expertise", {text = "0"..L["EXP"], value = "0", suffix = L["EXP"]})
 TS.Avoi = LDB:NewDataObject("Avoidance", {text = "0%"..L["AVOI"], value = "0%", suffix = L["AVOI"]})
 LDB = nil
@@ -36,11 +35,6 @@ TS:SetScript("OnEvent", function(self, event, unit)
 	local parry = format(two_fp, GetParryChance())
 	self.Parry.text = parry..L["PARRY"]
 	self.Parry.value = parry
-
-	local base, modifier = UnitDefense(player)
-	local def = format(single, base+modifier)
-	self.Def.text = def..L["DEF"]
-	self.Def.value = def
 
 	local Exp = format(single, GetCombatRating(24))
 	self.Exp.text = Exp..L["EXP"]

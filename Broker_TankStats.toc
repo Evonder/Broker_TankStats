@@ -2,15 +2,21 @@
 ## Title: Broker |cffffffffTankStats|r
 ## Notes: Tank statistics Data Broker plugin.
 ## Author: @project-author@
-## X-Credits: Sanjuro
 ## X-Date: @project-date-iso@
-## X-Category: Interface Enhancements
+## X-Credits: Sanjuro
+## X-eMail: evonder AT gmail DOT com
+## X-License: BSD
+## X-Website: http://www.wowace.com/addons/broker_tankstats/
+## X-Category: data-broker
 ## X-Localizations: enUS, zhTW
+
 ## Version: @project-version@
 
+#@no-lib-strip@
 libs/LibStub/LibStub.lua
 libs/CallbackHandler-1.0/CallbackHandler-1.0.lua
 libs/LibDataBroker-1.1/LibDataBroker-1.1.lua
+#@end-no-lib-strip@
 
 Locale.lua
 Broker_TankStats.lua

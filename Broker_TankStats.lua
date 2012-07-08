@@ -45,7 +45,11 @@ TS:SetScript("OnEvent", function(self, event, unit)
 	elseif (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1) then
 		avoi = format(two_fp, GetDodgeChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
 	else
-		avoi = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+		if (GetCombatRating(2) == 0) then
+			avoi = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/4.91850*0.04))
+		else
+			avoi = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(2)/4.91850*0.04)))
+		end
 	end
 	self.Avoi.text = avoi..L["AVOI"]
 	self.Avoi.value = avoi	

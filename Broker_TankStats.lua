@@ -1,11 +1,11 @@
 local TS = CreateFrame("Frame", "Broker_TankStats")
 local LDB = LibStub("LibDataBroker-1.1")
 local L = L
-TS.Dodge = LDB:NewDataObject("Dodge", {text = "0%"..L["DODGE"], value = "0%", suffix = L["DODGE"]})
-TS.block = LDB:NewDataObject("Block", {text = "0%"..L["BLOCK"], value = "0%", suffix = L["BLOCK"]})
-TS.Parry = LDB:NewDataObject("Parry", {text = "0%"..L["PARRY"], value = "0%", suffix = L["PARRY"]})
-TS.Exp = LDB:NewDataObject("Expertise", {text = "0"..L["EXP"], value = "0", suffix = L["EXP"]})
-TS.Avoi = LDB:NewDataObject("Avoidance", {text = "0%"..L["AVOI"], value = "0%", suffix = L["AVOI"]})
+TS.Dodge = LDB:NewDataObject("Dodge", {type = "data source", text = "0%"..L["DODGE"], value = "0%", suffix = L["DODGE"]})
+TS.block = LDB:NewDataObject("Block", {type = "data source", text = "0%"..L["BLOCK"], value = "0%", suffix = L["BLOCK"]})
+TS.Parry = LDB:NewDataObject("Parry", {type = "data source", text = "0%"..L["PARRY"], value = "0%", suffix = L["PARRY"]})
+TS.Exp = LDB:NewDataObject("Expertise", {type = "data source", text = "0"..L["EXP"], value = "0", suffix = L["EXP"]})
+TS.Avoi = LDB:NewDataObject("Avoidance", {type = "data source", text = "0%"..L["AVOI"], value = "0%", suffix = L["AVOI"]})
 LDB = nil
 
 local format = string.format

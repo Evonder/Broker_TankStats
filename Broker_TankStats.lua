@@ -21,7 +21,9 @@ TS:SetScript("OnEvent", function(self, event, unit)
 	dodge = format(two_fp, GetDodgeChance())
 	block = format(two_fp, GetBlockChance())
 	parry = format(two_fp, GetParryChance())
-	exp = format(single, GetCombatRating(24))
+	haste = format(single, GetCombatRating(18))
+	mastery = format(single, GetCombatRating(26))
+	crit = format(single, GetCombatRating(9))
 	if (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1 and UnitRace("player") == "Night Elf") then
 		avoid =  format(two_fp, GetDodgeChance() + 7 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
 	elseif (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1) then
@@ -59,7 +61,9 @@ if (LDB) then
 			self:AddLine(L["DODGE"] .. ": " .. dodge)
 			self:AddLine(L["BLOCK"] .. ": " .. block)
 			self:AddLine(L["PARRY"] .. ": " .. parry)
-			self:AddLine(L["EXP"] .. ": " .. exp)
+			self:AddLine(L["HASTE"] .. ": " .. haste)
+			self:AddLine(L["MASTERY"] .. ": " .. mastery)
+			self:AddLine(L["CRIT"] .. ": " .. crit)
 			self:AddLine(L["AVOID"] .. ": " .. avoid)
 			self:AddLine(" ")
 		end,

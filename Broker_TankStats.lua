@@ -18,22 +18,18 @@ TS:RegisterEvent("PLAYER_LOGIN")
 
 TS:SetScript("OnEvent", function(self, event, unit)
 	if (unit and unit ~= player) then return end
+	strength = format(single, UnitStat("player", 1))
 	dodge = format(two_fp, GetDodgeChance())
 	block = format(two_fp, GetBlockChance())
 	parry = format(two_fp, GetParryChance())
 	haste = format(single, GetCombatRating(18))
 	mastery = format(single, GetCombatRating(26))
+	vers = format(single, GetCombatRating(29))
 	crit = format(single, GetCombatRating(9))
 	if (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1 and UnitRace("player") == "Night Elf") then
-		avoid =  format(two_fp, GetDodgeChance() + 7 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
-	elseif (UnitClass("player") == "Druid" and GetShapeshiftForm() == 1) then
-		avoid = format(two_fp, GetDodgeChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(CR_DEFENSE_SKILL)/4.91850*0.04)))
+		avoid =  format(two_fp, GetDodgeChance() + 7 + (GetCombatRatingBonus(CR_DEFENSE_SKILL) + 20)*0.04,1,0.5,0)
 	else
-		if (GetCombatRating(2) == 0) then
-			avoid = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/4.91850*0.04))
-		else
-			avoid = format(two_fp, GetDodgeChance() + GetParryChance() + 5 + 1/(0.0625 + 0.956/(GetCombatRating(2)/4.91850*0.04)))
-		end
+		avoid = format(two_fp, GetDodgeChance() + 5 + (GetCombatRatingBonus(CR_DEFENSE_SKILL) + 20)*0.04,1,0.5,0)
 	end
 end)
 
@@ -58,13 +54,16 @@ if (LDB) then
 		OnTooltipShow = function(self)
 			self:AddLine("Current TankStats")
 			self:AddLine(" ")
+			self:AddLine(L["STR"] .. ": " .. strength)
+			self:AddLine(L["HASTE"] .. ": " .. haste)
+			self:AddLine(L["MASTERY"] .. ": " .. mastery)
+			self:AddLine(L["VERS"] .. ": " .. vers)
+			self:AddLine(L["CRIT"] .. ": " .. crit)
+			self:AddLine(L["AVOID"] .. ": " .. avoid)
+			self:AddLine(" --- ")			
 			self:AddLine(L["DODGE"] .. ": " .. dodge)
 			self:AddLine(L["BLOCK"] .. ": " .. block)
 			self:AddLine(L["PARRY"] .. ": " .. parry)
-			self:AddLine(L["HASTE"] .. ": " .. haste)
-			self:AddLine(L["MASTERY"] .. ": " .. mastery)
-			self:AddLine(L["CRIT"] .. ": " .. crit)
-			self:AddLine(L["AVOID"] .. ": " .. avoid)
 			self:AddLine(" ")
 		end,
 	})
